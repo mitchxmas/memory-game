@@ -1,0 +1,126 @@
+:root {
+  --whitish: #ececec;
+  --beige: #c9c3a6;
+  --red: rgb(133, 27, 27);
+  --green: rgb(62, 238, 153);
+  --orange: rgb(133, 74, 18);
+  --teal: #9fd3c7;
+  --lightblue: #385170;
+  --darkblue: #142d4c;
+
+  background-color: var(--beige);
+}
+
+body {
+  font-family: "Courier", sans-serif;
+}
+
+#topContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  border: 1px dashed grey;
+}
+
+#gameMsgBox {
+  border: 1px dashed grey;
+  width: 70%;
+  text-align: center;
+  padding: 10px;
+}
+
+#player1Box {
+  background-color: var(--red);
+  border: 1px dashed grey;
+  border-radius: 5%;
+  text-align: center;
+  padding: 10px;
+  color: var(--beige);
+}
+
+#player2Box {
+  background-color: var(--green);
+  border: 1px dashed grey;
+  border-radius: 5%;
+  text-align: center;
+  padding: 10px;
+}
+
+#board {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px dashed grey;
+}
+#cardContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  border: 1px dashed grey;
+  /* padding: 2%; */
+  width: 80%;
+  row-gap: 20px;
+  column-gap: 20px;
+}
+
+.cardBox {
+  background-color: var(--darkblue);
+  color: var(--whitish);
+  width: 7rem;
+  height: 9rem;
+  border-radius: 5%;
+  text-align: center;
+  line-height: 9rem;
+  background-size: contain;
+  padding: 3px;
+  /* max-height: 100%; */
+
+  /* ("https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/61+jpMbTLvL.jpg"); */
+}
+
+.hide {
+  background-color: var(--beige);
+  opacity: 0;
+}
+
+#cell0 {
+  background-image: image(
+    "https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/61+jpMbTLvL.jpg"
+  );
+}
+
+#menu {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  border: 1px solid grey;
+  padding: 2%;
+}
+
+#level {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+select {
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+
+select:focus {
+  outline: none;
+}
+
+#game--title {
+  font-size: 2rem;
+  text-align: center;
+}
+
+footer {
+  font-size: 10px;
+}

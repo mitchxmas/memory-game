@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Michael's Memory Game</title>
+    <link rel="stylesheet" href="mno_style.css" />
+  </head>
+
+  <body>
+    <div id="game--title">Memory</div>
+
+    <div id="topContainer">
+      <div id="player1Box" class="topBox">Player 1</div>
+      <div id="gameMsgBox" class="topBox">
+        Player 1 starts: click two cards on the board!
+      </div>
+      <div id="player2Box" class="topBox hide">Player 2</div>
+    </div>
+
+    <section id="board">
+      <div id="player1Cards">player 1 cards, left part</div>
+      <div id="cardContainer">
+        <!-- //this section contains all the game cards -->
+        <div class="cardBox" id="cell100">Trial cardbox</div>
+      </div>
+      <div id="player2Cards">player 2 cards, right part</div>
+    </section>
+    <div id="menu">
+      <div id="level">
+        Select game level:
+        <select name="levelMenu" id="level">
+          <option value="easy">Easy</option>
+          <option value="medium">Medium</option>
+          <option value="hard">Hard</option>
+        </select>
+      </div>
+      <button id="gameReset">Restart Game</button>
+      <button id="useWildCard">Use Wild Card</button>
+    </div>
+    <script src="mno_script.js"></script>
+  </body>
+  <!-- reminder: in case I use the pics downloaded on freepik... -->
+  <!-- <footer>
+    <a
+      href="https://www.freepik.com/free-vector/set-wild-animals-zoo-safari-reserve_5675421.htm#query=animal&position=1&from_view=search&track=sph"
+      >Image by studiogstock</a
+    >
+    on Freepik
+  </footer> -->
+</html>
