@@ -13,27 +13,31 @@
 
     <div id="topContainer">
       <div id="player1Box">Player 1</div>
-      <div id="gameMsgBox">Player 1 starts: click two cards on the board!</div>
+      <div id="gameMsgBox">Select a level or start playing Player1!</div>
       <div id="player2Box" class="hide">Player 2</div>
     </div>
 
     <section id="board">
-      <div id="player1Area">
-        <div>Player 1 score</div>
-        <div id="player1Score">0</div>
-        <div class="Player1Cards"></div>
+      <div class="playersArea" id="player1Area">
+        <div>Player 1 score:</div>
+        <div class="scores" id="player1Score">0</div>
+        <!-- <div>Special Cards:</div> -->
+        <div class="playerCards" id="player1Cards">Special Cards:</div>
       </div>
 
       <div id="cardContainer">
         <!-- //this section contains all the game cards -->
       </div>
 
-      <div id="player2Area">
-        <div>Player 2 score</div>
-        <div id="player2Score">0</div>
-        <div id="Player2Cards"></div>
+      <div class="playersArea" id="player2Area">
+        <div>Player 2 score:</div>
+        <div class="scores" id="player2Score">0</div>
+        <!-- <div>Special Cards:</div> -->
+        <div class="playerCards" id="player2Cards">Special Cards:</div>
       </div>
     </section>
+
+    <!-- Lower menu & buttons -->
     <div id="menu">
       <label for="levelMenu">Select a level:</label>
       <select name="levelMenu" id="levelMenu">
@@ -43,7 +47,6 @@
       </select>
 
       <button id="gameReset">Restart Game</button>
-      <button id="useWildCard">Use Wild Card</button>
     </div>
 
     <div id="console"></div>

@@ -15,15 +15,23 @@ body {
   font-family: "Courier", sans-serif;
 }
 
+#game--title {
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+/* Top  Area with players # and main message box  */
+
 #topContainer {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
-  border: 1px dashed grey;
+  /* border: 1px dashed grey; */
 }
 
 #gameMsgBox {
-  border: 1px dashed grey;
+  /* border: 1px dashed grey; */
   width: 70%;
   text-align: center;
   padding: 10px;
@@ -31,54 +39,97 @@ body {
 
 #player1Box {
   background-color: var(--red);
-  border: 1px dashed grey;
+  /* border: 1px dashed grey; */
   border-radius: 5%;
   text-align: center;
-  padding: 10px;
+  padding: 20px;
   color: var(--beige);
 }
 
 #player2Box {
   background-color: var(--green);
-  border: 1px dashed grey;
+  /* border: 1px dashed grey; */
   border-radius: 5%;
   text-align: center;
-  padding: 10px;
+  padding: 20px;
+}
+
+/* Central Area with players cards and main board  */
+
+#board {
+  /* border: 1px dashed grey; */
+  display: flex;
+  justify-content: center;
 }
 
 #player1Area {
-  width: 10%;
+  /* border: 1px dashed grey; */
+  display: flex;
+  flex-direction: column;
+  width: 15%;
+  padding: 2px;
   overflow: hidden !important;
   text-overflow: ellipsis;
+  text-align: center;
+  margin-top: 20px;
 }
 
 #player2Area {
-  width: 10%;
+  /* border: 1px dashed grey; */
+  display: flex;
+  flex-direction: column;
+  width: 15%;
+  padding: 2px;
   overflow: hidden !important;
   text-overflow: ellipsis;
+  text-align: center;
+  margin-top: 20px;
 }
 
-.player1Cards {
-  display: grid;
-  /* grid-template-columns: 1fr 1fr 1fr 1fr; */
-  /* grid-template-rows: 1fr 1fr 1fr 1fr 1fr; */
-  grid-template-rows: repeat(4, auto);
-  grid-template-columns: repeat(5, auto);
-}
-
-#board {
-  display: flex;
-  justify-content: center;
+.scores {
+  /* border: none; */
   align-items: center;
-  border: 1px dashed grey;
+  justify-content: center;
+  padding: 15px;
+  margin-left: 40px;
+  margin-right: 40px;
+
+  border-radius: 5px;
+  font-family: "Courier", sans-serif;
+  background-color: var(--darkblue);
+  color: var(--whitish);
+  font-size: 20px;
+  margin-top: 10px;
 }
+
+.playerCards {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+  row-gap: 10px;
+  column-gap: 10px;
+}
+
+.wildCardDisplay {
+  background-color: var(--darkblue);
+  color: var(--whitish);
+  width: 3.9375rem;
+  height: 7rem;
+  border-radius: 5%;
+  text-align: center;
+  line-height: 9rem;
+  background-size: contain;
+  padding: 3px;
+}
+
 #cardContainer {
+  /* border: 1px dashed grey; */
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   margin-top: 20px;
-  border: 1px dashed grey;
   /* padding: 2%; */
   width: 70%;
   row-gap: 20px;
@@ -106,33 +157,35 @@ body {
 }
 
 #menu {
+  /* border: 1px dotted grey; */
   display: flex;
+  justify-content: space-around;
   flex-wrap: wrap;
-  justify-content: space-evenly;
   align-items: center;
-  border: 1px solid grey;
   padding: 2%;
-}
-
-#level {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  margin: 20px 450px;
 }
 
 select {
   border: none;
   padding: 10px 20px;
   border-radius: 5px;
+  font-family: "Courier", sans-serif;
+  background-color: var(--darkblue);
+  color: var(--whitish);
 }
 
 select:focus {
   outline: none;
 }
 
-#game--title {
-  font-size: 2rem;
-  text-align: center;
+#gameReset {
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-family: "Courier", sans-serif;
+  background-color: var(--darkblue);
+  color: var(--whitish);
 }
 
 footer {
