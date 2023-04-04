@@ -12,41 +12,42 @@
     <div id="game--title">Memory</div>
 
     <div id="topContainer">
-      <div id="player1Box" class="topBox">Player 1</div>
-      <div id="gameMsgBox" class="topBox">
-        Player 1 starts: click two cards on the board!
-      </div>
-      <div id="player2Box" class="topBox hide">Player 2</div>
+      <div id="player1Box">Player 1</div>
+      <div id="gameMsgBox">Player 1 starts: click two cards on the board!</div>
+      <div id="player2Box" class="hide">Player 2</div>
     </div>
 
     <section id="board">
-      <div id="player1Cards">player 1 cards, left part</div>
+      <div id="player1Area">
+        <div>Player 1 score</div>
+        <div id="player1Score">0</div>
+        <div class="Player1Cards"></div>
+      </div>
+
       <div id="cardContainer">
         <!-- //this section contains all the game cards -->
-        <div class="cardBox" id="cell100">Trial cardbox</div>
       </div>
-      <div id="player2Cards">player 2 cards, right part</div>
+
+      <div id="player2Area">
+        <div>Player 2 score</div>
+        <div id="player2Score">0</div>
+        <div id="Player2Cards"></div>
+      </div>
     </section>
     <div id="menu">
-      <div id="level">
-        Select game level:
-        <select name="levelMenu" id="level">
-          <option value="easy">Easy</option>
-          <option value="medium">Medium</option>
-          <option value="hard">Hard</option>
-        </select>
-      </div>
+      <label for="levelMenu">Select a level:</label>
+      <select name="levelMenu" id="levelMenu">
+        <option value="1">Easy</option>
+        <option value="2">Medium</option>
+        <option value="3">Hard</option>
+      </select>
+
       <button id="gameReset">Restart Game</button>
       <button id="useWildCard">Use Wild Card</button>
     </div>
+
+    <div id="console"></div>
+
     <script src="mno_script.js"></script>
   </body>
-  <!-- reminder: in case I use the pics downloaded on freepik... -->
-  <!-- <footer>
-    <a
-      href="https://www.freepik.com/free-vector/set-wild-animals-zoo-safari-reserve_5675421.htm#query=animal&position=1&from_view=search&track=sph"
-      >Image by studiogstock</a
-    >
-    on Freepik
-  </footer> -->
 </html>

@@ -46,6 +46,26 @@ body {
   padding: 10px;
 }
 
+#player1Area {
+  width: 10%;
+  overflow: hidden !important;
+  text-overflow: ellipsis;
+}
+
+#player2Area {
+  width: 10%;
+  overflow: hidden !important;
+  text-overflow: ellipsis;
+}
+
+.player1Cards {
+  display: grid;
+  /* grid-template-columns: 1fr 1fr 1fr 1fr; */
+  /* grid-template-rows: 1fr 1fr 1fr 1fr 1fr; */
+  grid-template-rows: repeat(4, auto);
+  grid-template-columns: repeat(5, auto);
+}
+
 #board {
   display: flex;
   justify-content: center;
@@ -60,7 +80,7 @@ body {
   margin-top: 20px;
   border: 1px dashed grey;
   /* padding: 2%; */
-  width: 80%;
+  width: 70%;
   row-gap: 20px;
   column-gap: 20px;
 }
@@ -68,8 +88,8 @@ body {
 .cardBox {
   background-color: var(--darkblue);
   color: var(--whitish);
-  width: 7rem;
-  height: 9rem;
+  width: 5.5rem;
+  height: 8rem;
   border-radius: 5%;
   text-align: center;
   line-height: 9rem;
@@ -83,12 +103,6 @@ body {
 .hide {
   background-color: var(--beige);
   opacity: 0;
-}
-
-#cell0 {
-  background-image: image(
-    "https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/61+jpMbTLvL.jpg"
-  );
 }
 
 #menu {
