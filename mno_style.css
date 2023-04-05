@@ -5,6 +5,7 @@
   --green: rgb(15, 97, 57);
   --orange: rgb(133, 74, 18);
   --teal: #9fd3c7;
+  --verylightblue: #bdd4f0;
   --lightblue: #2e69b0;
   --darkblue: #142d4c;
 
@@ -160,7 +161,7 @@ body {
 /* LOWER AREA : level section dropdown button and reset button  */
 
 #menu {
-  border: 1px dotted grey;
+  /* border: 1px dotted grey; */
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -194,11 +195,7 @@ select:focus {
   margin-right: 70px;
 }
 
-#helpInstructions {
-  display: none;
-}
-
-#help {
+#helpBtn {
   border: none;
   padding: 15px 30px;
   border-radius: 5px;
@@ -207,11 +204,21 @@ select:focus {
   color: var(--whitish);
 }
 
-#help:hover + #helpInstructions {
-  display: block;
-  color: red;
+#helpInstructions {
+  display: none;
+  border: none;
+  margin: 20px 100px;
+  font-size: 13px;
+  padding: 15px 30px;
+  border-radius: 5px;
+  font-family: "Courier", sans-serif;
+  background-color: rgb(185, 184, 184);
+  color: var(--darkblue);
 }
 
+span {
+  font-weight: bold;
+}
 footer {
   font-size: 10px;
 }

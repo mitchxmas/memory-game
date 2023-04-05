@@ -46,8 +46,9 @@
         <option value="3">Hard</option>
       </select>
 
-      <button id="gameReset">Restart Game</button>
-      <div id="help">Help</div>
+      <button id="gameReset">Reset Game</button>
+
+      <button id="helpBtn">Help</button>
     </div>
 
     <div id="helpInstructions">
@@ -58,7 +59,13 @@
       is found, cards are turned back over for the next player to try his luck
       <br />
       4- Wild Cards: <br />
-      - Charity: the player will
+      <span>- Charity:</span> the opponent is forced to give up 2 pairs in favor
+      of the player holding this cardContainer <br />
+      <span>- Hero To Zero:</span> the opponent loses all his points and his
+      pairs are back on the board <br />
+      <span>- Crazy Shuffle:</span> the visible remaining cards are reshuffled.
+      ! This card can be used at any time and the player does not have to wait
+      for his turn to use it.
     </div>
 
     <script src="mno_script.js"></script>

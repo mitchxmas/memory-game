@@ -1,4 +1,4 @@
-// Global Variables and other declarations
+// GLOBAL VARIABLES AND OTHER DECLARATIONS
 let boardArray = [];
 const pairsPerLevel = [8, 10, 12];
 let numPairs = 8;
@@ -8,21 +8,17 @@ const player2Box = document.querySelector("#player2Box");
 const player1ScoreBox = document.querySelector("#player1Score");
 const player2ScoreBox = document.querySelector("#player2Score");
 const gameMsgBox = document.querySelector("#gameMsgBox");
-const consolMsg = document.querySelector("#console");
 const cardVersoGraphics = "./images/playingcard.jpg";
 // "https://s3.amazonaws.com/images.penguinmagic.com/images/products/original/8007b.jpg";
 const playerNumber = () => (player === 1 ? "1" : "2");
 const whosTurn = () => `It's ${playerNumber()}'s turn`;
 
-// let level = document.getElementById("levelMenu").value - 1;
 let level = 0;
-
 let player = 1;
 let cardsPlayed = [];
 let player1Score = 0;
 let player2Score = 0;
 let winner = 0;
-let gameWon = false;
 let wildCardClicked = [];
 
 let cardDetails = [
@@ -331,24 +327,12 @@ let cardDetails = [
 createArray(numPairs);
 createTiles();
 
-// Functions
-//TEMP FUNCTION ACTING AS A CONSOLE LOG
+// GAME PLAYING FUNCTIONS
 
-function showStuff() {
-  //   document.querySelector("#charityPlease").parentElement.id
-
-  const tempArray = [];
-  for (let i = 0; i < cardDetails[level].length; i++) {
-    tempArray.push(cardDetails[level][i].cardOwner);
-  }
-  consolMsg.innerText = `Card Owner: ${tempArray}`;
-}
-
-//selecting a level must (i) change the level but also (ii) clear the existing board and hence perform a 'reset'
 function selectLevel() {
   level = document.getElementById("levelMenu").value - 1;
   numPairs = pairsPerLevel[level];
-  resetGameFn();
+  resetGame();
 }
 
 function playerClickCard(event) {
@@ -373,8 +357,6 @@ function playerClickCard(event) {
     clickedCard.classList.add("wildCard");
     cardsPlayed.push(clickedCardPair);
     setTimeout(checkResults, 500);
-
-    setTimeout(checkResults, 500); //move the card to the player's area with a message on what the card does
   } else {
     clickedCard.src = cardDetails[level][clickedCardPair].link;
     clickedCard.classList.add("clicked");
@@ -384,7 +366,6 @@ function playerClickCard(event) {
 }
 
 function checkResults() {
-  // if cardsPlayed.length=2 then check card the array for a matching pair
   if (cardsPlayed.length === 2) {
     //HANDLE WILDCARDS
     if (wildCardClicked.length > 0) {
@@ -392,15 +373,12 @@ function checkResults() {
       window.alert(
         `Congrats player ${playerNumber()}, you found a Wildcard! Click on it later to test its powers`
       );
-      // Turn cards back over, in case of wildcard: hide
       turnClickedCardsOver();
       for (const item of document.querySelectorAll(".wildCard")) {
         item.classList.add("hide");
       }
       addWildCardtoPlayersArea();
-      changePlayerFn();
-
-      //HANDLE PAIRS - cards are identical, a pair is found
+      changePlayer();
     } else if (cardsPlayed[0] === cardsPlayed[1]) {
       gameMsgBox.innerText = `Congrats player ${playerNumber()}, you found a pair!`;
       window.alert(`Congrats player ${playerNumber()}, you found a pair!`);
@@ -411,10 +389,9 @@ function checkResults() {
     } else {
       window.alert(`Sorry player ${playerNumber()}, bad luck`);
       turnClickedCardsOver();
-      changePlayerFn();
+      changePlayer();
     }
     cardsPlayed = [];
-    showStuff();
   }
 
   if (player1Score + player2Score === numPairs) {
@@ -430,78 +407,6 @@ function checkResults() {
     gamePlaying = false;
     return;
   }
-}
-
-function changePlayerFn() {
-  player = player * -1;
-
-  if (player === 1) {
-    player1Box.classList.remove("hide");
-    player2Box.classList.add("hide");
-  }
-  if (player === -1) {
-    player2Box.classList.remove("hide");
-    player1Box.classList.add("hide");
-  }
-
-  gameMsgBox.innerHTML = whosTurn();
-}
-
-function createArray(numPairs) {
-  for (let i = 0; i < 2 * numPairs; i++) {
-    boardArray[i] = (i - (i % 2)) * 0.5;
-  }
-  //add the wild cards in
-  for (let i = 0; i <= level; i++) {
-    boardArray.push(numPairs + i);
-  }
-
-  // Shuffle the array using the Fisher-Yates algorithm
-  for (let i = boardArray.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [boardArray[i], boardArray[j]] = [boardArray[j], boardArray[i]];
-  }
-}
-
-function createTiles() {
-  for (let i = 0; i < boardArray.length; i++) {
-    const newCardImg = document.createElement("img");
-    newCardImg.id = `img${i}`;
-    newCardImg.classList.add("cardBox");
-    newCardImg.setAttribute("name", cardDetails[level][boardArray[i]].name);
-    newCardImg.setAttribute("pair", `${boardArray[i]}`);
-    newCardImg.src = cardVersoGraphics;
-    cardContainer.appendChild(newCardImg);
-    newCardImg.addEventListener("click", playerClickCard);
-  }
-}
-
-function resetGameFn() {
-  //turn all cards back over, reshuffle everything
-  //set pair count to 0 for each player
-  player = 1;
-  player1Score = 0;
-  player2Score = 0;
-  consolMsg.innerText = "";
-  const cardContainer = document.getElementById("cardContainer");
-  while (cardContainer.firstChild) {
-    cardContainer.removeChild(cardContainer.firstChild);
-  }
-
-  player1ScoreBox.innerText = 0;
-  player2ScoreBox.innerText = 0;
-  gameMsgBox.innerText = "Select a level or start playing Player1!";
-  player1Box.classList.remove("hide");
-  player2Box.classList.add("hide");
-
-  boardArray = [];
-  cardsPlayed = [];
-  wildCardClicked = [];
-  player1Cards.innerHTML = "";
-  player2Cards.innerHTML = "";
-  createArray(numPairs);
-  createTiles();
-  document.querySelector("#levelMenu").removeAttribute("disabled");
 }
 
 function changeScore() {
@@ -536,6 +441,98 @@ function handlePairs() {
   }
 }
 
+function changePlayer() {
+  player = player * -1;
+
+  if (player === 1) {
+    player1Box.classList.remove("hide");
+    player2Box.classList.add("hide");
+  }
+  if (player === -1) {
+    player2Box.classList.remove("hide");
+    player1Box.classList.add("hide");
+  }
+
+  gameMsgBox.innerHTML = whosTurn();
+}
+
+function winningMsg() {
+  if (player1Score > player2Score) {
+    return "Player 1 has won";
+  } else if (player1Score < player2Score) {
+    return "Player 2 has won";
+  } else {
+    return "It's a tie";
+  }
+}
+
+function helpInstructions() {
+  let item = document.getElementById("helpInstructions");
+  if (item.style.display === "none") {
+    item.style.display = "block";
+  } else {
+    item.style.display = "none";
+  }
+}
+
+// GAME START-UP & RESET
+function createArray(numPairs) {
+  for (let i = 0; i < 2 * numPairs; i++) {
+    boardArray[i] = (i - (i % 2)) * 0.5;
+  }
+  //add the wild cards in
+  for (let i = 0; i <= level; i++) {
+    boardArray.push(numPairs + i);
+  }
+
+  // Shuffle the array using the Fisher-Yates algorithm
+  // for (let i = boardArray.length - 1; i > 0; i--) {
+  //   const j = Math.floor(Math.random() * (i + 1));
+  //   [boardArray[i], boardArray[j]] = [boardArray[j], boardArray[i]];
+  // }
+}
+
+function createTiles() {
+  for (let i = 0; i < boardArray.length; i++) {
+    const newCardImg = document.createElement("img");
+    newCardImg.id = `img${i}`;
+    newCardImg.classList.add("cardBox");
+    newCardImg.setAttribute("name", cardDetails[level][boardArray[i]].name);
+    newCardImg.setAttribute("pair", `${boardArray[i]}`);
+    newCardImg.src = cardVersoGraphics;
+    cardContainer.appendChild(newCardImg);
+    newCardImg.addEventListener("click", playerClickCard);
+  }
+}
+
+function resetGame() {
+  //turn all cards back over, reshuffle everything
+  //set pair count to 0 for each player
+  player = 1;
+  player1Score = 0;
+  player2Score = 0;
+  const cardContainer = document.getElementById("cardContainer");
+  while (cardContainer.firstChild) {
+    cardContainer.removeChild(cardContainer.firstChild);
+  }
+
+  player1ScoreBox.innerText = 0;
+  player2ScoreBox.innerText = 0;
+  gameMsgBox.innerText = "Select a level or start playing Player1!";
+  player1Box.classList.remove("hide");
+  player2Box.classList.add("hide");
+
+  boardArray = [];
+  cardsPlayed = [];
+  wildCardClicked = [];
+  player1Cards.innerHTML = "";
+  player2Cards.innerHTML = "";
+  createArray(numPairs);
+  createTiles();
+  document.querySelector("#levelMenu").removeAttribute("disabled");
+}
+
+// WILD CARDS
 function addWildCardtoPlayersArea() {
   for (let i = 0; i < wildCardClicked.length; i++) {
     //Loop thru all cards within a level to find the wildCard and add the player as owner in the card detail array
@@ -577,7 +574,7 @@ function charityPleaseHandling(event) {
       "A Charity card was played: the player takes 2 points from his opponent!"
     );
     event.target.style.display = "none";
-    changePlayerFn();
+    changePlayer();
   } else if (whosCardIsIt === "player2Cards" && player === -1) {
     player2Score += 2;
     player1Score -= 2;
@@ -585,7 +582,7 @@ function charityPleaseHandling(event) {
       "A Charity card was played: the player takes 2 points from his opponent!"
     );
     event.target.style.display = "none";
-    changePlayerFn();
+    changePlayer();
   }
 
   document.querySelector("#player1Score").innerText = player1Score;
@@ -609,7 +606,7 @@ function heroToZeroHandling(event) {
     }
     alert("Your opponent's score is now 0...His pairs are back on the board!");
     event.target.style.display = "none";
-    changePlayerFn();
+    changePlayer();
 
     // if it's Player2's turn to play and player 2 is clicking his wildcard
   } else if (whosCardIsIt === "player2Cards" && player === -1) {
@@ -625,7 +622,7 @@ function heroToZeroHandling(event) {
     }
     alert("Your opponent's score is now 0...His pairs are back on the board!");
     event.target.style.display = "none";
-    changePlayerFn();
+    changePlayer();
   }
 
   document.querySelector("#player1Score").innerText = player1Score;
@@ -661,23 +658,14 @@ function crazyShuffleHandling(event) {
     (whosCardIsIt === "player1Cards" && player === 1) ||
     (whosCardIsIt === "player2Cards" && player === -1)
   ) {
-    changePlayerFn();
+    changePlayer();
   }
   event.target.style.display = "none";
   alert("Crazy Shuffle!");
 }
 
-function winningMsg() {
-  if (player1Score > player2Score) {
-    return "Player 1 has won";
-  } else if (player1Score < player2Score) {
-    return "Player 2 has won";
-  } else {
-    return "It's a tie";
-  }
-}
+//EVENT LISTENERS
 
-//Event Listeners
-
-document.querySelector("#gameReset").addEventListener("click", resetGameFn);
 document.querySelector("#levelMenu").addEventListener("change", selectLevel);
+document.querySelector("#gameReset").addEventListener("click", resetGame);
+document.querySelector("#helpBtn").addEventListener("click", helpInstructions);
