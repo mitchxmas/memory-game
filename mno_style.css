@@ -2,10 +2,10 @@
   --whitish: #ececec;
   --beige: #c9c3a6;
   --red: rgb(133, 27, 27);
-  --green: rgb(62, 238, 153);
+  --green: rgb(15, 97, 57);
   --orange: rgb(133, 74, 18);
   --teal: #9fd3c7;
-  --lightblue: #385170;
+  --lightblue: #2e69b0;
   --darkblue: #142d4c;
 
   background-color: var(--beige);
@@ -21,40 +21,43 @@ body {
   text-align: center;
 }
 
-/* Top  Area with players # and main message box  */
+/* TOP AREA:  players number, main message box  */
 
 #topContainer {
+  /* border: 1px dashed grey; */
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
-  /* border: 1px dashed grey; */
+  align-items: center;
 }
 
 #gameMsgBox {
   /* border: 1px dashed grey; */
   width: 70%;
   text-align: center;
-  padding: 10px;
 }
 
 #player1Box {
-  background-color: var(--red);
   /* border: 1px dashed grey; */
+  background-color: var(--red);
   border-radius: 5%;
+  font-weight: bold;
   text-align: center;
   padding: 20px;
-  color: var(--beige);
+  color: var(--whitish);
 }
 
 #player2Box {
-  background-color: var(--green);
   /* border: 1px dashed grey; */
+  background-color: var(--green);
   border-radius: 5%;
+  font-weight: bold;
   text-align: center;
   padding: 20px;
+  color: var(--whitish);
 }
 
-/* Central Area with players cards and main board  */
+/* MAIN CENTRAL AREA: main playing board with cards, and each player's area on each side, with score, and special or wildcards  */
 
 #board {
   /* border: 1px dashed grey; */
@@ -90,13 +93,13 @@ body {
   /* border: none; */
   align-items: center;
   justify-content: center;
-  padding: 15px;
-  margin-left: 40px;
-  margin-right: 40px;
+  padding: 10px;
+  margin-left: 60px;
+  margin-right: 60px;
 
   border-radius: 5px;
   font-family: "Courier", sans-serif;
-  background-color: var(--darkblue);
+  background-color: var(--lightblue);
   color: var(--whitish);
   font-size: 20px;
   margin-top: 10px;
@@ -147,8 +150,6 @@ body {
   background-size: contain;
   padding: 3px;
   /* max-height: 100%; */
-
-  /* ("https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/61+jpMbTLvL.jpg"); */
 }
 
 .hide {
@@ -156,23 +157,27 @@ body {
   opacity: 0;
 }
 
+/* LOWER AREA : level section dropdown button and reset button  */
+
 #menu {
-  /* border: 1px dotted grey; */
+  border: 1px dotted grey;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   flex-wrap: wrap;
   align-items: center;
-  padding: 2%;
-  margin: 20px 450px;
+  padding-top: 20px;
+  /* margin: 20px 300px; */
 }
 
 select {
   border: none;
-  padding: 10px 20px;
+  padding: 15px 30px;
   border-radius: 5px;
   font-family: "Courier", sans-serif;
   background-color: var(--darkblue);
   color: var(--whitish);
+  margin-right: 70px;
+  margin-left: 20px;
 }
 
 select:focus {
@@ -181,11 +186,30 @@ select:focus {
 
 #gameReset {
   border: none;
-  padding: 10px 20px;
+  padding: 15px 30px;
   border-radius: 5px;
   font-family: "Courier", sans-serif;
   background-color: var(--darkblue);
   color: var(--whitish);
+  margin-right: 70px;
+}
+
+#helpInstructions {
+  display: none;
+}
+
+#help {
+  border: none;
+  padding: 15px 30px;
+  border-radius: 5px;
+  font-family: "Courier", sans-serif;
+  background-color: var(--darkblue);
+  color: var(--whitish);
+}
+
+#help:hover + #helpInstructions {
+  display: block;
+  color: red;
 }
 
 footer {

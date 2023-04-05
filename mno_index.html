@@ -39,7 +39,7 @@
 
     <!-- Lower menu & buttons -->
     <div id="menu">
-      <label for="levelMenu">Select a level:</label>
+      <label id="levelMenuLabel" for="levelMenu">Select a level:</label>
       <select name="levelMenu" id="levelMenu">
         <option value="1">Easy</option>
         <option value="2">Medium</option>
@@ -47,9 +47,19 @@
       </select>
 
       <button id="gameReset">Restart Game</button>
+      <div id="help">Help</div>
     </div>
 
-    <div id="console"></div>
+    <div id="helpInstructions">
+      1- Select the level you want to play <br />
+      2- Each player takes turns and clicks any two cards on the board to try
+      and find matching cards<br />
+      3- If a pair is found, the player scores 1pt and plays again. If no pair
+      is found, cards are turned back over for the next player to try his luck
+      <br />
+      4- Wild Cards: <br />
+      - Charity: the player will
+    </div>
 
     <script src="mno_script.js"></script>
   </body>
