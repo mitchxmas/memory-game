@@ -486,10 +486,10 @@ function createArray(numPairs) {
   }
 
   // Shuffle the array using the Fisher-Yates algorithm
-  // for (let i = boardArray.length - 1; i > 0; i--) {
-  //   const j = Math.floor(Math.random() * (i + 1));
-  //   [boardArray[i], boardArray[j]] = [boardArray[j], boardArray[i]];
-  // }
+  for (let i = boardArray.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [boardArray[i], boardArray[j]] = [boardArray[j], boardArray[i]];
+  }
 }
 
 function createTiles() {
