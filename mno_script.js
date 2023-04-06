@@ -1,7 +1,5 @@
 // GLOBAL VARIABLES AND OTHER DECLARATIONS
-let boardArray = [];
 const pairsPerLevel = [8, 10, 12];
-let numPairs = 8;
 const cardContainer = document.querySelector("#cardContainer");
 const player1Box = document.querySelector("#player1Box");
 const player2Box = document.querySelector("#player2Box");
@@ -11,16 +9,17 @@ const gameMsgBox = document.querySelector("#gameMsgBox");
 const cardVersoGraphics = "./images/playingcard.jpg";
 // "https://s3.amazonaws.com/images.penguinmagic.com/images/products/original/8007b.jpg";
 const playerNumber = () => (player === 1 ? "1" : "2");
-const whosTurn = () => `It's ${playerNumber()}'s turn`;
+const whosTurn = () => `It's player ${playerNumber()}'s turn`;
 
+let numPairs = 8;
 let level = 0;
 let player = 1;
-let cardsPlayed = [];
 let player1Score = 0;
 let player2Score = 0;
 let winner = 0;
+let boardArray = [];
+let cardsPlayed = [];
 let wildCardClicked = [];
-
 let cardDetails = [
   // Easy Level Cards
   [
@@ -324,6 +323,7 @@ let cardDetails = [
   ],
 ];
 
+// ROOT CODE
 createArray(numPairs);
 createTiles();
 
